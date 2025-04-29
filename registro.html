@@ -3,22 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Registro de Productos</title>
+  <title>Registro Admin</title>
   <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
   <div class="contenedor">
-    <h1>Registro de Productos</h1>
+    <div class="header-admin">
+      <h1>Registro de Productos <small>(Modo Admin)</small></h1>
+      <button id="logoutBtn" class="boton-link boton-rojo">Cerrar Sesión</button>
+    </div>
+    
     <form id="formulario">
       <input type="text" name="nombre" placeholder="Nombre" required minlength="3">
       <input type="text" name="productos" placeholder="Productos/Servicios" required>
-      <input type="text" name="sector" placeholder="Sector (ej: Alimentos)" required>
+      <input type="text" name="sector" placeholder="Sector" required>
       <input type="text" name="direccion" placeholder="Dirección" required>
-      <input type="tel" name="contacto" placeholder="Teléfono" required pattern="[0-9]{10,15}">
-      <input type="url" name="imagen" placeholder="URL de imagen (https://)" required>
-      <input type="url" name="facebook" placeholder="Facebook (URL completa)" required>
-      <input type="url" name="instagram" placeholder="Instagram (URL completa)" required>
-      <button type="submit">Registrar</button>
+      <input type="tel" name="contacto" placeholder="Teléfono" required>
+      <input type="url" name="imagen" placeholder="URL de imagen" required>
+      <input type="url" name="facebook" placeholder="Facebook" required>
+      <input type="url" name="instagram" placeholder="Instagram" required>
+      <button type="submit">Guardar Producto</button>
     </form>
     <div id="mensaje"></div>
     <a href="galeria.html" class="boton-link">Ver Galería</a>
