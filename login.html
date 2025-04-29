@@ -3,19 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Iniciar Sesión - Admin</title>
+  <meta name="theme-color" content="#6A1B9A">
+  <title>Acceso Administrador</title>
   <link rel="stylesheet" href="estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .contenedor-login {
+      max-width: 500px;
+      width: 100%;
+      background: rgba(255,255,255,0.96);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(74, 20, 140, 0.3);
+    }
+    
+    .login-header {
+      background: var(--morado-primario);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    
+    .login-header h1 {
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .login-header h1::after {
+      display: none;
+    }
+    
+    #loginForm {
+      padding: 40px;
+      margin: 0;
+    }
+    
+    #loginForm input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
-  <div class="contenedor">
-    <h1>Acceso Administrador</h1>
+  <div class="contenedor-login">
+    <div class="login-header">
+      <h1>Panel Administrativo</h1>
+    </div>
+    
     <form id="loginForm">
       <input type="text" id="usuario" placeholder="Usuario" required>
       <input type="password" id="password" placeholder="Contraseña" required>
       <button type="submit">Ingresar</button>
     </form>
+    
     <div id="mensajeLogin"></div>
-    <a href="galeria.html" class="boton-link">Volver a la Galería</a>
   </div>
   <script src="script.js"></script>
 </body>
