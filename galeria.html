@@ -3,13 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6A1B9A">
   <title>Galería de Productos</title>
   <link rel="stylesheet" href="estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="contenedor">
     <h1>Galería de Productos</h1>
-    <a href="login.html" class="boton-link" id="btnAdmin">+ Nuevo Producto</a>
+    <a href="login.html" class="boton-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+      </svg>
+      Nuevo Producto
+    </a>
+    
     <div id="galeria"></div>
   </div>
   <script src="script.js"></script>
