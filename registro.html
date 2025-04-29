@@ -25,17 +25,17 @@
     <form id="formulario">
       <div class="form-grid">
         <div class="form-group">
-          <label for="nombre">Nombre del Negocio</label>
+          <label for="nombre">Nombre del Negocio*</label>
           <input type="text" id="nombre" name="nombre" required minlength="3">
         </div>
         
         <div class="form-group">
-          <label for="productos">Productos/Servicios</label>
+          <label for="productos">Productos/Servicios*</label>
           <input type="text" id="productos" name="productos" required>
         </div>
         
         <div class="form-group">
-          <label for="sector">Sector</label>
+          <label for="sector">Sector*</label>
           <select id="sector" name="sector" required>
             <option value="">Seleccione...</option>
             <option value="Alimentos">Alimentos</option>
@@ -47,28 +47,42 @@
         </div>
         
         <div class="form-group">
-          <label for="direccion">Dirección</label>
+          <label for="direccion">Dirección*</label>
           <input type="text" id="direccion" name="direccion" required>
         </div>
         
         <div class="form-group">
-          <label for="contacto">Teléfono</label>
+          <label for="contacto">Teléfono*</label>
           <input type="tel" id="contacto" name="contacto" required pattern="[0-9]{10,15}">
         </div>
         
         <div class="form-group">
-          <label for="imagen">URL de Imagen</label>
-          <input type="url" id="imagen" name="imagen" required placeholder="https://ejemplo.com/imagen.jpg">
+          <label for="imagen">Imagen del Producto*</label>
+          <div class="upload-options">
+            <input type="file" id="uploadImagen" accept="image/*" style="display: none;">
+            <button type="button" class="boton-subir" onclick="document.getElementById('uploadImagen').click()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+              Subir imagen
+            </button>
+            <span class="opcion-o">o</span>
+            <input type="url" id="imagenUrl" name="imagen" placeholder="Introduce URL de imagen">
+          </div>
+          <div id="previewImagen"></div>
+          <p class="nota">* Puedes subir una imagen o proporcionar una URL</p>
         </div>
         
         <div class="form-group">
-          <label for="facebook">Facebook (URL completa)</label>
-          <input type="url" id="facebook" name="facebook" required placeholder="https://facebook.com/usuario">
+          <label for="facebook">Facebook</label>
+          <input type="url" id="facebook" name="facebook" placeholder="https://facebook.com/usuario">
         </div>
         
         <div class="form-group">
-          <label for="instagram">Instagram (URL completa)</label>
-          <input type="url" id="instagram" name="instagram" required placeholder="https://instagram.com/usuario">
+          <label for="instagram">Instagram</label>
+          <input type="url" id="instagram" name="instagram" placeholder="https://instagram.com/usuario">
         </div>
       </div>
       
