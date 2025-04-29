@@ -1,32 +1,6 @@
 const API_URL = 'https://sheetdb.io/api/v1/yuefqrt88lmh2';
 
-// Lógica del formulario (solo en registro.html)
-const formulario = document.getElementById('formulario');
-if (formulario) {
-  formulario.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(formulario));
-    data.fechaRegistro = new Date().toISOString();
-
-    try {
-      const respuesta = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ data })
-      });
-      if (respuesta.ok) {
-        alert('¡Producto registrado!');
-        formulario.reset();
-        window.location.href = 'galeria.html'; // Redirige a la galería
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Error al registrar. Por favor, intenta nuevamente.');
-    }
-  });
-}
-
-// Lógica de la galería (solo en galeria.html)
+// Lógica de la galería
 const galeria = document.getElementById('galeria');
 if (galeria) {
   cargarGaleria();
@@ -36,20 +10,41 @@ async function cargarGaleria() {
   try {
     const respuesta = await fetch(API_URL);
     const datos = await respuesta.json();
+    
     galeria.innerHTML = datos.map(item => `
       <div class="tarjeta">
-        <img src="${item.imagen}" alt="${item.nombre}" onerror="this.src='https://via.placeholder.com/150'">
-        <h3>${item.nombre}</h3>
-        <p><strong>Producto:</strong> ${item.productos}</p>
-        <p><strong>Sector:</strong> ${item.sector}</p>
-        <p>
-          <a href="${item.facebook || '#'}" target="_blank">Facebook</a> | 
-          <a href="${item.instagram || '#'}" target="_blank">Instagram</a>
-        </p>
+        <h2>${item.nombre || 'Sin nombre'}</h2>
+        
+        <div class="item-detalle">
+          <span class="icono">☐</span> 
+          <span class="texto">Productos/Servicios: ${item.productos || 'No especificado'}</span>
+        </div>
+        
+        <div class="item-detalle">
+          <span class="icono">✓</span> 
+          <span class="texto">Sector: ${item.sector || 'No especificado'}</span>
+        </div>
+        
+        <div class="item-detalle">
+          <span class="icono">📱</span> 
+          <a href="tel:${item.contacto}" class="texto">Contacto: ${item.contacto || 'N/A'}</a>
+        </div>
+        
+        <div class="item-detalle">
+          <span class="icono">📍</span> 
+          <span class="texto">Dirección: ${item.direccion || 'No especificada'}</span>
+        </div>
+        
+        <div class="redes-sociales">
+          <a href="${item.facebook || '#'}" target="_blank" class="red-social">Facebook</a>
+          <span class="separador">|</span>
+          <a href="${item.instagram || '#'}" target="_blank" class="red-social">Instagram</a>
+        </div>
       </div>
     `).join('');
+    
   } catch (error) {
     console.error('Error al cargar galería:', error);
-    galeria.innerHTML = '<p>No se pudieron cargar los productos. Intenta más tarde.</p>';
+    galeria.innerHTML = '<p class="error">⚠️ No se pudieron cargar los productos. Intenta más tarde.</p>';
   }
 }
