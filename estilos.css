@@ -1,197 +1,246 @@
-/* VARIABLES */
+/* VARIABLES - TEMA MORADO PROFESIONAL */
 :root {
-  --color-primario: #3498db;
-  --color-exito: #27ae60;
-  --color-error: #e74c3c;
-  --color-advertencia: #f39c12;
-  --color-fondo: #f8f9fa;
-  --color-texto: #2c3e50;
-  --sombra: 0 2px 10px rgba(0,0,0,0.1);
+  --morado-oscuro: #4A148C;
+  --morado-primario: #6A1B9A;
+  --morado-secundario: #9C27B0;
+  --morado-claro: #CE93D8;
+  --morado-brillante: #E1BEE7;
+  --texto-claro: #FFFFFF;
+  --texto-oscuro: #212121;
+  --fondo-claro: #F3E5F5;
+  --sombra-intensa: 0 8px 32px rgba(106, 27, 154, 0.3);
+  --degradado-morado: linear-gradient(135deg, var(--morado-oscuro) 0%, var(--morado-primario) 100%);
+  --transicion-rapida: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ESTILOS GENERALES */
-body {
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
+/* RESET Y ESTILOS BASE */
+* {
   margin: 0;
-  padding: 20px;
-  line-height: 1.6;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: 'Montserrat', 'Segoe UI', sans-serif;
+  background: var(--degradado-morado) fixed;
+  color: var(--texto-claro);
+  min-height: 100vh;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* CONTENEDOR PRINCIPAL */
 .contenedor {
-  max-width: 1000px;
-  margin: 0 auto;
-  background: white;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: var(--sombra);
+  max-width: 1100px;
+  margin: 30px auto;
+  background: rgba(255, 255, 255, 0.97);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: var(--sombra-intensa);
+  color: var(--texto-oscuro);
+  position: relative;
+  overflow: hidden;
+}
+
+.contenedor::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: var(--morado-brillante);
+}
+
+/* TIPOGRAFÍA */
+h1, h2, h3 {
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: var(--morado-primario);
 }
 
 h1 {
-  color: var(--color-primario);
+  font-size: 2.5rem;
   text-align: center;
-  margin-bottom: 30px;
+  position: relative;
+  padding-bottom: 15px;
 }
 
-h1 small {
-  font-size: 0.6em;
-  color: #7f8c8d;
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: var(--morado-claro);
 }
 
 /* FORMULARIOS */
 form {
   display: grid;
-  gap: 15px;
-  margin-bottom: 25px;
+  gap: 25px;
+  margin: 40px 0;
 }
 
-input, button {
-  padding: 12px 15px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 16px;
-  transition: all 0.3s;
+input, textarea, select {
+  padding: 16px 20px;
+  border: 2px solid var(--morado-claro);
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: var(--transicion-rapida);
+  background: rgba(255, 255, 255, 0.9);
 }
 
-input:focus {
-  border-color: var(--color-primario);
+input:focus, textarea:focus {
+  border-color: var(--morado-primario);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(52,152,219,0.2);
+  box-shadow: 0 0 0 4px rgba(156, 39, 176, 0.2);
+  transform: translateY(-2px);
 }
 
 button {
-  background-color: var(--color-primario);
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
+  padding: 16px 30px;
+  background: var(--morado-primario);
+  color: var(--texto-claro);
+  font-weight: 600;
   border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--transicion-rapida);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1rem;
 }
 
 button:hover {
-  background-color: #2980b9;
+  background: var(--morado-oscuro);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(106, 27, 154, 0.3);
 }
 
-/* MENSAJES */
-.cargando {
-  color: #7f8c8d;
-  text-align: center;
-}
-
-.exito {
-  color: var(--color-exito);
-  background: #e8f5e9;
-  padding: 15px;
-  border-radius: 6px;
-  text-align: center;
-}
-
-.error {
-  color: var(--color-error);
-  background: #fde8e8;
-  padding: 15px;
-  border-radius: 6px;
-  text-align: center;
-}
-
-/* TARJETAS */
+/* TARJETAS DE PRODUCTOS */
 #galeria {
   display: grid;
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
 }
 
 .tarjeta {
   background: white;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: var(--sombra);
+  box-shadow: 0 6px 20px rgba(106, 27, 154, 0.15);
+  transition: var(--transicion-rapida);
   cursor: pointer;
-  transition: all 0.3s ease;
-  max-height: 80px;
+  position: relative;
+  border-top: 4px solid var(--morado-primario);
 }
 
-.tarjeta.expandida {
-  max-height: 500px;
+.tarjeta:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(106, 27, 154, 0.25);
 }
 
 .vista-compacta {
-  padding: 15px;
+  padding: 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .vista-compacta h3 {
+  color: var(--morado-primario);
   margin: 0;
-  color: var(--color-primario);
+  font-size: 1.4rem;
 }
 
 .vista-expandida {
+  padding: 0 25px 25px;
   display: none;
-  padding: 0 20px 20px;
-  animation: fadeIn 0.5s ease;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .tarjeta.expandida .vista-expandida {
-  display: flex;
-  gap: 25px;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  display: block;
 }
 
 .vista-expandida img {
-  width: 250px;
-  height: 200px;
+  width: 100%;
+  height: 250px;
   object-fit: cover;
-  border-radius: 6px;
-  border: 1px solid #eee;
-}
-
-.info-detallada {
-  flex: 1;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid var(--morado-claro);
 }
 
 .info-detallada p {
-  margin: 12px 0;
+  margin: 15px 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
-.redes a {
-  color: var(--color-primario);
-  text-decoration: none;
-  margin-right: 10px;
-}
-
-.redes a:hover {
-  text-decoration: underline;
+.info-detallada strong {
+  color: var(--morado-primario);
 }
 
 /* BOTONES */
 .boton-link {
-  display: inline-block;
-  background: var(--color-exito);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--morado-primario);
   color: white;
-  padding: 12px 25px;
-  border-radius: 6px;
+  padding: 16px 32px;
+  border-radius: 10px;
   text-decoration: none;
-  margin-bottom: 25px;
-  font-weight: bold;
+  font-weight: 600;
+  transition: var(--transicion-rapida);
+  margin: 20px 0;
   text-align: center;
-  transition: background 0.3s;
 }
 
 .boton-link:hover {
-  background: #219653;
+  background: var(--morado-oscuro);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(106, 27, 154, 0.3);
 }
 
 .boton-rojo {
-  background: var(--color-error);
+  background: #D32F2F;
 }
 
 .boton-rojo:hover {
-  background: #c0392b;
+  background: #B71C1C;
+}
+
+/* MENSAJES */
+#mensaje, #mensajeLogin {
+  margin: 25px 0;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+}
+
+.exito {
+  background: #E8F5E9;
+  color: #2E7D32;
+  border-left: 5px solid #4CAF50;
+}
+
+.error {
+  background: #FFEBEE;
+  color: #C62828;
+  border-left: 5px solid #F44336;
+}
+
+.cargando {
+  background: #E3F2FD;
+  color: #1565C0;
+  border-left: 5px solid #2196F3;
 }
 
 /* HEADER ADMIN */
@@ -199,15 +248,38 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--morado-claro);
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 /* RESPONSIVO */
 @media (max-width: 768px) {
   .contenedor {
-    padding: 15px;
+    padding: 25px;
+    margin: 15px auto;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  #galeria {
+    grid-template-columns: 1fr;
   }
 
   .header-admin {
@@ -215,17 +287,7 @@ button:hover {
     text-align: center;
   }
 
-  .vista-expandida {
-    flex-direction: column;
-  }
-
-  .vista-expandida img {
-    width: 100%;
-    height: auto;
-    max-height: 200px;
-  }
-
-  .tarjeta.expandida {
-    max-height: 800px;
+  input, button, .boton-link {
+    padding: 14px 20px;
   }
 }
