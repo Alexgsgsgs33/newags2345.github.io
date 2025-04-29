@@ -1,13 +1,15 @@
-/* ESTILOS GENERALES */
+/* VARIABLES */
 :root {
   --color-primario: #3498db;
   --color-exito: #27ae60;
   --color-error: #e74c3c;
+  --color-advertencia: #f39c12;
   --color-fondo: #f8f9fa;
   --color-texto: #2c3e50;
   --sombra: 0 2px 10px rgba(0,0,0,0.1);
 }
 
+/* ESTILOS GENERALES */
 body {
   font-family: 'Segoe UI', system-ui, sans-serif;
   background-color: var(--color-fondo);
@@ -32,7 +34,12 @@ h1 {
   margin-bottom: 30px;
 }
 
-/* FORMULARIO */
+h1 small {
+  font-size: 0.6em;
+  color: #7f8c8d;
+}
+
+/* FORMULARIOS */
 form {
   display: grid;
   gap: 15px;
@@ -66,10 +73,6 @@ button:hover {
 }
 
 /* MENSAJES */
-#mensaje {
-  margin: 20px 0;
-}
-
 .cargando {
   color: #7f8c8d;
   text-align: center;
@@ -88,11 +91,6 @@ button:hover {
   background: #fde8e8;
   padding: 15px;
   border-radius: 6px;
-  text-align: center;
-}
-
-.aviso {
-  color: #f39c12;
   text-align: center;
 }
 
@@ -188,10 +186,33 @@ button:hover {
   background: #219653;
 }
 
+.boton-rojo {
+  background: var(--color-error);
+}
+
+.boton-rojo:hover {
+  background: #c0392b;
+}
+
+/* HEADER ADMIN */
+.header-admin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
 /* RESPONSIVO */
 @media (max-width: 768px) {
   .contenedor {
     padding: 15px;
+  }
+
+  .header-admin {
+    flex-direction: column;
+    text-align: center;
   }
 
   .vista-expandida {
