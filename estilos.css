@@ -1,17 +1,126 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Galería Interactiva</title>
-  <link rel="stylesheet" href="estilos.css">
-</head>
-<body>
-  <div class="contenedor">
-    <h1>Galería de Productos</h1>
-    <a href="registro.html" class="boton-link">➕ Agregar Producto</a>
-    <div id="galeria"></div>
-  </div>
-  <script src="script.js"></script>
-</body>
-</html>
+/* ESTILOS GENERALES */
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #f5f7fa;
+  margin: 0;
+  padding: 20px;
+}
+
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* TARJETAS INTERACTIVAS */
+.tarjeta {
+  background: white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  max-height: 80px; /* Altura inicial */
+}
+
+.tarjeta.expandida {
+  max-height: 500px; /* Altura expandida */
+}
+
+.vista-compacta {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vista-compacta h3 {
+  margin: 0;
+  color: #3498db;
+}
+
+.vista-expandida {
+  display: none;
+  padding: 0 15px 15px;
+}
+
+.tarjeta.expandida .vista-expandida {
+  display: flex;
+  gap: 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.vista-expandida img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.info-detallada {
+  flex: 1;
+}
+
+.info-detallada p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.redes {
+  margin-top: 15px;
+}
+
+.redes a {
+  color: #2980b9;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.redes a:hover {
+  text-decoration: underline;
+}
+
+/* BOTONES */
+.boton-link {
+  display: inline-block;
+  background: #27ae60;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-bottom: 30px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.boton-link:hover {
+  background: #219653;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .vista-expandida {
+    flex-direction: column;
+  }
+  
+  .vista-expandida img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .tarjeta.expandida {
+    max-height: 800px;
+  }
+}
